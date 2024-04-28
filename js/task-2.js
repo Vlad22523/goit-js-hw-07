@@ -27,15 +27,10 @@ const images = [
 
 const galerry = document.querySelector(".gallery");
 
-images.map((image) => {
-  galerry.insertAdjacentHTML(
-    "afterbegin",
-    `<li><img src="${image.url}" alt="${image.alt}"></li>`
-  );
-});
+const galerryList = images
+  .map((image) => {
+    return `<li><img class='gallery-img' src="${image.url}" alt="${image.alt}"></li>`;
+  })
+  .join("");
 
-const galerryList = document.querySelectorAll(".gallery li");
-galerryList.forEach((elem) => {
-  elem.classList.add("gallery-li");
-  elem.firstElementChild.classList.add("gallery-img");
-});
+galerry.insertAdjacentHTML("beforeend", galerryList);
